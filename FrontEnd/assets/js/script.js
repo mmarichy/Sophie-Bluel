@@ -31,6 +31,13 @@ fetch ('http://localhost:5678/api/categories').then((res) =>{
         data.forEach((categorie) => {
             let catFiltre = document.createElement('button')
             catFiltre.dataset.id = categorie.id
+            catFiltre.classList.add('filter__btn')
+            catFiltre.addEventListener("click", function(){
+                document.querySelectorAll(".filter__btn").forEach(btn => {
+                    btn.classList.remove("filter__btn--active");})
+                catFiltre.classList.add('filter__btn--active')
+                console.log(catFiltre)
+            })
 
             let tButton = document.createTextNode(categorie.name)
 
