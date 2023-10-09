@@ -68,3 +68,20 @@ allWork.addEventListener('click', function(){
         work.style.display ='block';
     })
 })
+
+const token = localStorage.getItem('token');
+const LogOut = document.querySelector('.log-out')
+
+adminH()
+function adminH (){
+    document.querySelectorAll(".admin__mod").forEach(a => {
+        if (token === null){
+            return;
+        }
+        else {
+            a.removeAttribute('aria-hidden')
+            a.removeAttribute('style')
+            LogOut.innerHTML = "deconnexion";
+        }
+    })
+}
