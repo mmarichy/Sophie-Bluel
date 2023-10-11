@@ -87,11 +87,11 @@ function adminH (){
             LogOut.innerHTML = "deconnexion";
 
             filtersNone.style.display = "none";
-            portfolioEdition.style.display ="block"
+            portfolioEdition.style.display ="flex"
 
         }
     }
-// Ajout d'un EventListener pour se déconnecter et retourner sur la pag
+// Ajout d'un EventListener pour se déconnecter et rester sur la page //
 LogOut.addEventListener('click', function() {
     if (localStorage.getItem("token")) {
         localStorage.removeItem("token");
