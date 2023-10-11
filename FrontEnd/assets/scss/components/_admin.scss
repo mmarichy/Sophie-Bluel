@@ -22,3 +22,21 @@
 .admin__bHead .admin__mod{
 	color: white;
 }
+
+#portfolio h2{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: nowrap;
+	gap: 30px;
+}
+.portfolio__edition{
+	display: flex;
+	color: black;
+	text-align: center;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	gap: 8px;
+}

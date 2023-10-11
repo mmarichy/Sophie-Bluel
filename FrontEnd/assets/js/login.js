@@ -13,12 +13,7 @@ alredyLogged();
 // Si l'utilisateur est déjà connecté, on supprime le token
 function alredyLogged() {
     if (localStorage.getItem("token")) {
-        localStorage.removeItem("token");
-
-        const p = document.createElement("p");
-        p.innerHTML = "<br><br><br>Vous avez été déconnecté, veuillez vous reconnecter";
-        alreadyLoggedError.appendChild(p);
-        return;
+        window.location.href = "index.html";
     }
 }
 
@@ -65,7 +60,7 @@ function login(id) {
     .then(result => { 
         console.log(result);
         // Si couple email/mdp incorrect
-        if (result.error || result.message) {
+        if (result.status === 401 || result.status === 404) {
             const p = document.createElement("p");
             p.innerHTML = "La combinaison e-mail/mot de passe est incorrecte";
             loginMdpError.appendChild(p);

@@ -1,3 +1,4 @@
+// mettre dans une fonction
 fetch('http://localhost:5678/api/works').then((res) => {
     res.json().then((data) => {
 
@@ -71,17 +72,32 @@ allWork.addEventListener('click', function(){
 
 const token = localStorage.getItem('token');
 const LogOut = document.querySelector('.log-out')
+const portfolioEdition = document.querySelector('.portfolio__edition')
 
 adminH()
 function adminH (){
-    document.querySelectorAll(".admin__mod").forEach(a => {
+    const admin = document.querySelector(".admin__mod");
+    const filtersNone = document.querySelector('.filters');
         if (token === null){
             return;
         }
         else {
-            a.removeAttribute('aria-hidden')
-            a.removeAttribute('style')
+            admin.removeAttribute('aria-hidden');
+            admin.removeAttribute('style');
             LogOut.innerHTML = "deconnexion";
+
+            filtersNone.style.display = "none";
+            portfolioEdition.style.display ="block"
+
         }
-    })
-}
+    }
+// Ajout d'un EventListener pour se déconnecter et retourner sur la pag
+LogOut.addEventListener('click', function() {
+    if (localStorage.getItem("token")) {
+        localStorage.removeItem("token");
+        window.location.href = "index.html";
+    }
+    else {
+        window.location.href = "login.html"
+    }
+})
