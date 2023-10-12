@@ -30,7 +30,11 @@
 	flex-wrap: nowrap;
 	gap: 30px;
 }
-.portfolio__edition{
+
+
+.link-modal{
+	text-decoration: none;
+	display: flex;
 	color: black;
 	text-align: center;
 	font-size: 14px;
@@ -38,4 +42,4 @@
 	font-weight: 400;
 	line-height: normal;
 	gap: 5px;
-}
+ }

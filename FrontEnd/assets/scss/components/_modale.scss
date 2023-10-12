@@ -1,3 +1,63 @@
-.js-modal {
-    text-decoration: none;
+// A vérifier //
+* { box-sizing: border-box;}
+
+*:focus {
+    box-shadow: 0 0 10px blue;
+}
+
+.modal {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    animation: fadeIn .3s both;
+}
+
+.modal-wrapper{
+    width: 630px;
+    max-width: calc(100vw - 20px);
+    max-height: calc(100vh - 20px);
+    border-radius: 10px;
+    padding: 20px;
+    background-color: white;
+    animation: slidefromtop .5s both;
+}
+
+.modal li {
+    color: black;
+}
+
+.modal[aria-hidden="true"] {
+    animation-name: fadeOut;
+}
+
+.modal[aria-hidden="true"] .modal-wrapper{
+    animation-name: slideToBottom;
+}
+
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+
+@keyframes slidefromtop {
+    from { transform: translatey(-50px);}
+    to { transform: translatey(0px);}
+}
+
+@keyframes slideToBottom {
+    from { transform: translatey(0px);}
+    to { transform: translatey(50px);}
 }
