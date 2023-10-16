@@ -104,7 +104,7 @@ LogOut.addEventListener('click', function() {
 
 // modale //
 let modal1 = null
-const focusableSelector = 'button, a, input, textarea'
+const focusableSelector = 'button, a, input, textarea, i'
 let focusables = []
 let prevFocusedElement = null
 
@@ -131,12 +131,12 @@ const closeModal1 = function (e) {
     modal1.removeEventListener('click', closeModal1);
     modal1.querySelector('.js-modal-close').removeEventListener('click', closeModal1);
     modal1.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation);
-    const hideModal = function(){
+    const hideModal1 = function(){
         modal1.style.display = "none";
-        modal1.removeEventListener('animationend', hideModal)
+        modal1.removeEventListener('animationend', hideModal1)
         modal1 = null;
     }
-    modal1.addEventListener('animationend', hideModal)
+    modal1.addEventListener('animationend', hideModal1)
 }
 
 const stopPropagation = function (e){
@@ -170,5 +170,55 @@ window.addEventListener('keydown', function (e){
     }
     if (e.key === "Tab" && modal1 !== null) {
         focusInModal(e);
+    }
+})
+
+
+let modal2 = null
+
+const openModal2 = function (e) {
+    e.preventDefault();
+    modal2 = document.querySelector(e.target.getAttribute('href'));
+    modal2.style.display = null;
+    modal2.removeAttribute('aria-hidden');
+    modal2.setAttribute('aria-modal', 'true');
+    modal2.addEventListener('click', closeModal2);
+    modal2.querySelector('.js-modal-close2').addEventListener('click', closeModal2);
+    modal2.querySelector('.js-modal-stop2').addEventListener('click', stopPropagation);
+
+    modal1.setAttribute('aria-hidden', true);
+    modal1.removeAttribute('aria-modal');
+    modal1.removeEventListener('click', closeModal1);
+    modal1.style.display = "none";
+}
+
+const closeModal2 = function(e) {
+    if (modal2 === null) return;
+    e.preventDefault();
+    modal2.setAttribute('aria-hidden', true);
+    modal2.removeAttribute('aria-modal');
+    modal2.removeEventListener('click', closeModal2);
+    modal2.querySelector('.js-modal-close2').removeEventListener('click', closeModal2);
+    modal2.querySelector('.js-modal-stop2').removeEventListener('click', stopPropagation);
+    const hideModal2 = function(){
+        modal2.style.display = "none";
+        modal2.removeEventListener('animationend', hideModal2)
+        modal2 = null;
+    }
+    modal2.addEventListener('animationend', hideModal2)
+}
+
+
+document.querySelectorAll('.js-button-ajouter').forEach(a =>{
+    a.addEventListener('click', openModal2);
+})
+
+
+window.addEventListener('keydown', function (e){
+    if (e.key === "Escape" || e.key === "Esc") {
+    closeModal2(e);
+    }
+    if (e.key === "Tab" && modal2 !== null) {
+        focusInModal2(e);
     }
 })

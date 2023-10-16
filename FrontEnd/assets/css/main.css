@@ -358,6 +358,7 @@ footer nav ul {
 }
 
 .modal-wrapper {
+  overflow: auto;
   width: 630px;
   max-width: calc(100vw - 20px);
   max-height: calc(100vh - 20px);
@@ -410,4 +411,33 @@ footer nav ul {
   to {
     transform: translatey(50px);
   }
+}
+.modal-close {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.title-modal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Work Sans;
+  font-size: 26px;
+  font-weight: 400;
+  color: black;
+}
+
+.button-ajouter-photo {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 240px;
+  height: 40px;
+  border-radius: 60px;
+  border: none;
+  background: #1D6154;
+  color: white;
+  cursor: pointer;
 }/*# sourceMappingURL=main.css.map */

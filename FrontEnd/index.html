@@ -56,30 +56,57 @@
 		</article>
 	</section>
 	<section id="portfolio">
+
+
+
+
+
+
+
+
+
+
 		<h2 id="projets">Mes Projets <span class="portfolio__edition" style="display: none;"><a href="#modal1" class="js-modal link-modal"><i class="fa-solid fa-pen-to-square"></i>edition</a></span> </h2>
 		<!------- Modal ------->
 		<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
 			<div class="modal-wrapper js-modal-stop">
-				<button class="js-modal-close">fermer la modale</button>
-				<h1 id="titlemodal">Ajouter un Projet</h1>
-				<h2>I love this planet! I've got wealth, fame, and access to the depths of sleaze that those things bring.</h2>
-				<p>Who are those horrible orange men? No, just a regular mistake. Man, I'm sore all over. I feel like I just went ten rounds with mighty Thor. Robot 1-X, save my friends! And Zoidberg!</p>
-				<ol>
-				<li>And until then, I can never die?</li><li>I found what I need. And it's not friends, it's things.</li><li>Okay, I like a challenge.</li>
-				</ol>
-				<input type="text">
-
-				<h3>You seem malnourished. Are you suffering from intestinal parasites?</h3>
-				<p>We can't compete with Mom! Her company is big and evil! Ours is small and neutral! I guess because my parents keep telling me to be more ladylike. As though! WINDMILLS DO NOT WORK THAT WAY! GOOD NIGHT!</p>
-				<ul>
-				<li>No, I'm Santa Claus!</li><li>Yeah, lots of people did.</li><li>Too much work. Let's burn it and say we dumped it in the sewer.</li>
-				</ul>
-
-				<a href="#">frgrgegdf</a>
-				<p>That's a popular name today. Little "e", big "B"? Ok, we'll go deliver this crate like professionals, and then we'll go ride the bumper cars. File not found. Guards! Bring me the forms I need to fill out to have her taken away!</p>
-				<p>Check it out, y'all. Everyone who was invited is here. Good man. Nixon's pro-war and pro-family. That's not soon enough! Leela's gonna kill me.</p>
+				<a class="js-modal-close modal-close"><i class="fa-solid fa-xmark fa-xl"></i></a>
+				<h2 id="titlemodal" class="title-modal">Galerie photo</h2>
+				<div>
+					<!-- génération work -->
+				</div>
+				<button class="button-ajouter-photo js-button-ajouter" href="#modal2">Ajouter une photo</button>
 			</div>
 		</aside>
+
+
+		<aside id="modal2" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal2" style="display: none;">
+			<div class="modal-wrapper js-modal-stop2">
+				<a class="js-modal-close2 modal-close"><i class="fa-solid fa-xmark fa-xl"></i></a>
+				<h2 id="titlemodal2" class="title-modal">Ajout photo</h2>
+				<form>
+					<label></label>
+					<input type="file">
+					<select name="categorie" id="categorie">
+						<option value="">--Choisir une categorie--</option>
+						<option value="1">object</option>
+						<option value="2">appartement</option>
+						<option value="3">paysage</option>
+					</select>
+				</form>
+				<button class="button-ajouter-photo js-button-valider">Valider</button>
+			</div>
+		</aside>
+
+
+
+
+
+
+
+
+
+
 
 		<div class="filters">
 			<!--------Bouton Filtres-------->
@@ -94,11 +121,11 @@
 		<p>Vous avez un projet ? Discutons-en !</p>
 		<form action="#" method="post">
 			<label for="name">Nom</label>
-			<input type="text" name="name" id="name">
+			<input type="text" name="name" id="name" required>
 			<label for="email">Email</label>
-			<input type="email" name="email" id="email">
+			<input type="email" name="email" id="email" required>
 			<label for="message">Message</label>
-			<textarea name="message" id="message" cols="30" rows="10"></textarea>
+			<textarea name="message" id="message" cols="30" rows="10" required></textarea>
 			<input type="submit" value="Envoyer">
 		</form>
 	</section>
