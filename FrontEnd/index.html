@@ -63,7 +63,7 @@
 			<div class="modal-wrapper js-modal-stop">
 				<a class="js-modal-close modal-close"><i class="fa-solid fa-xmark fa-xl"></i></a>
 				<h2 id="titlemodal" class="title-modal">Galerie photo</h2>
-				<div>
+				<div class="gallery-modal">
 					<!-- génération work -->
 				</div>
 				<button class="button-ajouter-photo js-button-ajouter" href="#modal2">Ajouter une photo</button>
@@ -72,17 +72,15 @@
 
 		<aside id="modal2" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal2" style="display: none;">
 			<div class="modal-wrapper js-modal-stop">
+				<a class="js-modal-back modal-back"><i class="fa-solid fa-arrow-left fa-xl"></i></a>
 				<a class="js-modal-close modal-close"><i class="fa-solid fa-xmark fa-xl"></i></a>
 				<h2 id="titlemodal2" class="title-modal">Ajout photo</h2>
 				<form>
 					<label></label>
 					<input type="file">
 					<input type="text">
-					<select name="categorie" id="categorie">
-						<option value="">--Choisir une categorie--</option>
-						<option value="1">object</option>
-						<option value="2">appartement</option>
-						<option value="3">paysage</option>
+					<select name="categorie" id="categorie" required>
+							<option value="" >--Choisir une categorie--</option>
 					</select>
 				</form>
 				<button class="button-ajouter-photo js-button-valider" type="submit">Valider</button>
