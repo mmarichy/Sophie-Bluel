@@ -230,43 +230,6 @@ footer nav ul {
   color: #B1663C;
 }
 
-/****** Formulaire Connexion******/
-.form__login {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-  width: 35%;
-}
-.form__login input {
-  height: 50px;
-  font-size: 1.2em;
-  border: none;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-}
-.form__login label {
-  margin: 3em 0 1em 0;
-}
-.form__login textarea {
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-}
-.form__login input[type=submit] {
-  font-family: "Syne";
-  font-weight: 700;
-  color: white;
-  background-color: #1D6154;
-  border: 2px solid #1D6154;
-  margin: 3em auto;
-  width: 180px;
-  text-align: center;
-  border-radius: 60px;
-  transition: all 0.5s ease;
-}
-.form__login input[type=submit]:hover {
-  color: #1D6154;
-  background-color: white;
-  scale: 1.05;
-}
-
 .filters {
   display: flex;
   justify-content: center;
@@ -339,6 +302,153 @@ footer nav ul {
   font-weight: 400;
   line-height: normal;
   gap: 5px;
+}
+
+/****** Formulaire Connexion ******/
+.form__login {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 35%;
+}
+.form__login input {
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.form__login label {
+  margin: 3em 0 1em 0;
+}
+.form__login textarea {
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.form__login input[type=submit] {
+  font-family: "Syne";
+  font-weight: 700;
+  color: white;
+  background-color: #1D6154;
+  border: 2px solid #1D6154;
+  margin: 3em auto;
+  width: 180px;
+  text-align: center;
+  border-radius: 60px;
+  transition: all 0.5s ease;
+}
+.form__login input[type=submit]:hover {
+  color: #1D6154;
+  background-color: white;
+  scale: 1.05;
+}
+
+/****** Formulaire Ajout Photo ******/
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-group input[type=submit] {
+  font-family: "Syne";
+  font-weight: 700;
+  color: white;
+  background-color: #A7A7A7;
+  border: 2px solid #A7A7A7;
+  margin: 80px 0 30px 0;
+  height: 50px;
+  width: 250px;
+  text-align: center;
+  border-radius: 60px;
+  transition: all 0.5s ease;
+}
+.form-group input[type=submit]:hover {
+  background: #1D6154;
+  border-color: #1D6154;
+  scale: 1.05;
+  cursor: pointer;
+}
+.form-group::after {
+  content: " ";
+  border-top: 1px solid #A7A7A7;
+  height: 1px;
+  width: 420px;
+  margin: auto;
+  position: absolute;
+  bottom: 130px;
+}
+.form-group__photo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #E8F1F7;
+  width: 420px;
+  height: 170px;
+  border-radius: 10px;
+}
+.form-group__photo i {
+  color: #306685;
+  font-size: 76px;
+  font-weight: 100;
+  margin: 20px;
+  margin-top: -25px;
+}
+.form-group__photo input {
+  display: none;
+}
+.form-group__photo label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 40px;
+  background-color: #cbd6dc;
+  color: #306685;
+  border-radius: 50px;
+  margin-top: -10px;
+  cursor: pointer;
+}
+.form-group__photo label:hover {
+  background-color: #306685;
+  color: white;
+}
+.form-group__photo::after {
+  content: "jpg, png : 4mo max";
+  position: absolute;
+  top: 215px;
+}
+.form-group__titre {
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+}
+.form-group__titre input {
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  background: #FFF;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+}
+.form-group__titre label {
+  margin: 3em 0 1em 0;
+  font-weight: 500;
+  font-size: 14px;
+}
+.form-group__categorie {
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+}
+.form-group__categorie select {
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  background: #FFF;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+}
+.form-group__categorie label {
+  margin: 3em 0 1em 0;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 * {

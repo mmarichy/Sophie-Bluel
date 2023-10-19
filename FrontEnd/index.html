@@ -31,12 +31,15 @@
 			<a href="#projets">
 				<li>projets</li>
 			</a>
+
 			<a href="#contact">
 				<li>contact</li>
 			</a>
+
 			<a href="#">
 				<li class="log-out">login</li>
 			</a>
+
 			<a href="https://www.instagram.com/" target="_blank">
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</a>
@@ -75,15 +78,29 @@
 				<a class="js-modal-back modal-back"><i class="fa-solid fa-arrow-left fa-xl"></i></a>
 				<a class="js-modal-close modal-close"><i class="fa-solid fa-xmark fa-xl"></i></a>
 				<h2 id="titlemodal2" class="title-modal">Ajout photo</h2>
-				<form>
-					<label></label>
-					<input type="file">
-					<input type="text">
-					<select name="categorie" id="categorie" required>
-							<option value="" >--Choisir une categorie--</option>
-					</select>
+
+				<form class="form-group">
+					<div class="form-group__photo">
+						<i class="fa-regular fa-image"></i>
+						<label for="image">+ Ajouter une photo</label>
+						<input class="js-image" id="image" type="file" name="image" required>
+					</div>
+
+					<div class="form-group__titre">
+						<label for="titre">Titre</label>
+						<input class="js-title" id="titre" type="text" name="titre" required>
+					</div>
+
+					<div class="form-group__categorie">
+						<label for="categorie">Catégorie</label>
+						<select name="categorie" id="categorie" class="js-categoryid" required>
+							<option selected disabled hidden>-- Choisir une categorie --</option>
+								<!-- Categories générer dynamiquement -->
+						</select>
+					</div>
+					<input class="js-button-valider" type="submit" value="Valider">
 				</form>
-				<button class="button-ajouter-photo js-button-valider" type="submit">Valider</button>
+
 			</div>
 		</aside>
 
@@ -98,15 +115,22 @@
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
+
 		<form action="#" method="post">
+
 			<label for="name">Nom</label>
 			<input type="text" name="name" id="name" required>
+
 			<label for="email">Email</label>
 			<input type="email" name="email" id="email" required>
+
 			<label for="message">Message</label>
 			<textarea name="message" id="message" cols="30" rows="10" required></textarea>
+
 			<input type="submit" value="Envoyer">
+
 		</form>
+
 	</section>
 </main>
 

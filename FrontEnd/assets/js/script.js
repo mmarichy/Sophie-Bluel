@@ -173,7 +173,7 @@ let back = document.querySelector('.js-modal-back').addEventListener('click', fu
 
 // Categories ajout work
 
-let categorieModal = document.getElementById('categorie')
+let categorieModal = document.querySelector('.js-categoryid')
 fetch ('http://localhost:5678/api/categories').then((res) =>{
         res.json().then((data) => {
             const categorieModal = document.getElementById('categorie')
