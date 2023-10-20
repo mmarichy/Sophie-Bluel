@@ -411,8 +411,7 @@ footer nav ul {
   background-color: #306685;
   color: white;
 }
-.form-group__photo::after {
-  content: "jpg, png : 4mo max";
+.form-group__photo__span {
   position: absolute;
   top: 215px;
 }

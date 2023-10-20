@@ -119,8 +119,7 @@
             color: white;
         }
 
-        &::after{
-            content: "jpg, png : 4mo max";
+        &__span{
             position: absolute;
             top: 215px;
         }

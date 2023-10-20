@@ -79,22 +79,23 @@
 				<a class="js-modal-close modal-close"><i class="fa-solid fa-xmark fa-xl"></i></a>
 				<h2 id="titlemodal2" class="title-modal">Ajout photo</h2>
 
-				<form class="form-group">
-					<div class="form-group__photo">
-						<i class="fa-regular fa-image"></i>
-						<label for="image">+ Ajouter une photo</label>
-						<input class="js-image" id="image" type="file" name="image" required>
+				<form class="form-group" action="" enctype="multipart/form-data">
+					<div class="form-group__photo " id="previewImageContainer">
+						<i class="fa-regular fa-image js-i-input"></i>
+						<label for="image" class="js-label-input">+ Ajouter une photo</label>
+						<input class="js-image" id="image" type="file" name="image" onchange="previewImage()">
+						<span class="form-group__photo__span js-span-input">jpg, png : 4mo max</span>
 					</div>
 
 					<div class="form-group__titre">
 						<label for="titre">Titre</label>
-						<input class="js-title" id="titre" type="text" name="titre" required>
+						<input class="js-titre" id="titre" type="text" name="titre" required>
 					</div>
 
 					<div class="form-group__categorie">
 						<label for="categorie">Catégorie</label>
-						<select name="categorie" id="categorie" class="js-categoryid" required>
-							<option selected disabled hidden>-- Choisir une categorie --</option>
+						<select name="categorie" id="categorie" class="js-categorieid" required>
+							<option selected disabled hidden>Choisir une categorie</option>
 								<!-- Categories générer dynamiquement -->
 						</select>
 					</div>

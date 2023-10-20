@@ -177,7 +177,7 @@ let categorieModal = document.querySelector('.js-categoryid')
 fetch ('http://localhost:5678/api/categories').then((res) =>{
         res.json().then((data) => {
             const categorieModal = document.getElementById('categorie')
-            console.log(data)
+            // console.log(data)
 
             data.forEach((cat) => {
                 let catModal = document.createElement('option');
@@ -188,8 +188,99 @@ fetch ('http://localhost:5678/api/categories').then((res) =>{
                 categorieModal.appendChild(catModal)
             })
         })
-    })
+})
 
+// ajouter projet
+
+const btnAddProjet = document.querySelector(".js-button-valider");
+btnAddProjet.addEventListener("click", addProjet);
+
+async function addProjet(event) {
+    event.preventDefault();
+
+    const title = document.querySelector('.js-titre').value;
+    const categorieID = document.querySelector('.js-categorieid').value;
+    const image = document.querySelector('.js-image').value;
+    console.log(title)
+    console.log(categorieID)
+    console.log(image)
+
+    if (title === "" || categorieID === "" || image === undefined) {
+        alert("Merci de remplir tous les champs");
+        return;
+    } else if (categorieID !== "Objets" && categorieID !== "Appartements" && categorieID !== "Hotels & restaurants") {
+        alert("Merci de choisir une catégorie valide");
+        return;
+    } else {
+        try {
+            const formData = new FormData();
+            formData.append("title", title);
+            formData.append("categorie", categorieID);
+            formData.append("image", image);
+
+            const response = await fetch("http://localhost:5678/api/works", {
+                method: "POST",
+                headers: {
+                    Authorization: 'Bearer' + token,
+                },
+                body: formData,
+            })
+
+
+            if (response.status === 201) {
+                alert('Projet ajouter');
+                closeModal();
+                updateWork()
+            }else if (response.status === 400) {
+                alert("Merci de remplir tous les champs");
+            } else if (response.status === 500) {
+                alert("Erreur serveur");
+            } else if (response.status === 401) {
+                alert("Vous n'êtes pas autorisé à ajouter un projet");
+                // window.location.href = "index.html";
+        }}    
+        
+        catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+function previewImage() {
+    const fileInput = document.getElementById('image');
+    const file = fileInput.files[0];
+    const imagePreviewContainer = document.getElementById('previewImageContainer');
+    
+    if(file.type.match('image.*')){
+      const reader = new FileReader();
+      
+      reader.addEventListener('load', function (event) {
+        const imageUrl = event.target.result;
+        const image = new Image();
+        
+        image.addEventListener('load', function() {
+            const labelPreview = document.querySelector('.js-label-input');
+            labelPreview.style.display = "none";
+            const iPreview = document.querySelector('.js-i-input');
+            iPreview.style.display = "none";
+            const inputPreview = document.querySelector('.js-image');
+            inputPreview.style.display = "none";
+            const spanPreview = document.querySelector('.js-span-input')
+            spanPreview.style.display = "none";
+
+            imagePreviewContainer.appendChild(image);
+        });
+        
+        image.src = imageUrl;
+        image.style.width = '129px';
+        image.style.height = '170px';
+      });
+      
+      reader.readAsDataURL(file);
+    }
+  }
+
+console.log(token)
 
 updateWork()
 updateCategories()
