@@ -154,6 +154,19 @@ function openModal(modal){
         modal1.removeAttribute('aria-modal');
         modal1.removeEventListener('click', () => closeModal(modal1));
         modal1.style.display = "none";
+
+        const image = document.querySelector('.js-image-preview');
+        image.src = "";
+        const label = document.querySelector('.js-label-input');
+        label.style.display = "flex"
+        const iModal2 = document.querySelector('.js-i-input');
+        iModal2.style.display = "flex"
+        const span = document.querySelector('.js-span-input');
+        span.style.display = "flex"
+        const titre = document.querySelector('.js-titre');
+        titre.value = "";
+        const categorie = document.querySelector('.js-categorieid');
+        categorie.selectedIndex = 0
     }
 }
 
@@ -260,7 +273,7 @@ async function addProjet(event) {
 
 
             if (response.status === 201) {
-                // alert('Projet ajouter');
+                alert('Projet ajouter');
                 const modal = document.querySelector('#modal2')
                 closeModal(modal);
                 updateWork();
@@ -271,7 +284,7 @@ async function addProjet(event) {
                 alert("Erreur serveur");
             } else if (response.status === 401) {
                 alert("Vous n'êtes pas autorisé à ajouter un projet");
-                // window.location.href = "index.html";
+                window.location.href = "index.html";
         }}    
         
         catch (error) {
@@ -308,6 +321,7 @@ function previewImage() {
         image.src = imageUrl;
         image.style.width = '129px';
         image.style.height = '170px';
+        image.classList.add('js-image-preview')
       });
       
       reader.readAsDataURL(file);
@@ -316,8 +330,37 @@ function previewImage() {
 
 console.log(token)
 
+
+// Supression Projet
+
+// async function deleteWork (){
+
+//     const response = await fetch("http://localhost:5678/api/works/" , {
+//         method: "DELETE",
+//         headers: {
+//             Authorization: `Bearer ${token}`,
+//         },
+//     })
+
+
+//     if (response.status === 200 || response.status === 204) {
+//         alert('Projet Supprimer');
+//         const modal = document.querySelector('#modal2')
+//         closeModal(modal);
+//         updateWork();
+//         updateWorkModal()
+//     } else if (response.status === 500) {
+//         alert("Erreur serveur");
+//     } else if (response.status === 401) {
+//         alert("Vous n'êtes pas autorisé à supprimer un projet");
+//         window.location.href = "index.html";
+//         }
+//     }
+
+    
+let deleteLink = document.querySelectorAll(".fa-trash-can");
+console.log(deleteLink)
+
 updateWork()
 updateCategories()
-
-
 updateWorkModal()
