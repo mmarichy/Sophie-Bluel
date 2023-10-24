@@ -1,5 +1,8 @@
 // mettre dans une fonction
 function updateWork() {
+    document.querySelectorAll('.work').forEach((elem) => {
+        elem.remove();
+    })
     fetch('http://localhost:5678/api/works').then((res) => {
         res.json().then((data) => {
 
@@ -23,6 +26,35 @@ function updateWork() {
         })
     })
 }
+
+function updateWorkModal() {
+    document.querySelectorAll('.work-modal').forEach((elem) => {
+        elem.remove();
+    })
+    fetch('http://localhost:5678/api/works').then((res) => {
+        res.json().then((data) => {
+
+            const galleryModal = document.querySelector('.gallery-modal')            
+            data.forEach((work) => {
+                const trashCan = document.createElement('i')
+                trashCan.classList.add('fa-solid');
+                trashCan.classList.add('fa-trash-can');
+                const figure = document?.createElement('figure');
+                figure.dataset.id = work.id;
+                figure.dataset.cat = work.categoryId;
+                figure.classList.add('work-modal');
+                const imgWork = document?.createElement('img');
+                imgWork.src = work.imageUrl;
+                imgWork.alt = work.title;
+
+                figure.appendChild(imgWork);
+                galleryModal.appendChild(figure);
+                figure.appendChild(trashCan);
+            })
+        })
+    })
+}
+
 function updateCategories() {
     fetch ('http://localhost:5678/api/categories').then((res) =>{
         res.json().then((data) => {
@@ -199,8 +231,8 @@ async function addProjet(event) {
     event.preventDefault();
 
     const title = document.querySelector('.js-titre').value;
-    const categorieID = document.querySelector('.js-categorieid').value;
-    const image = document.querySelector('.js-image').value;
+    const categorieID = document.querySelector('.js-categorieid').selectedIndex;
+    const image = document.querySelector('.js-image').files[0];
     console.log(title)
     console.log(categorieID)
     console.log(image)
@@ -208,29 +240,31 @@ async function addProjet(event) {
     if (title === "" || categorieID === "" || image === undefined) {
         alert("Merci de remplir tous les champs");
         return;
-    } else if (categorieID !== "Objets" && categorieID !== "Appartements" && categorieID !== "Hotels & restaurants") {
+    } else if (categorieID !== 1 && categorieID !== 2 && categorieID !== 3) {
         alert("Merci de choisir une catégorie valide");
         return;
     } else {
         try {
             const formData = new FormData();
             formData.append("title", title);
-            formData.append("categorie", categorieID);
+            formData.append("category", categorieID);
             formData.append("image", image);
 
             const response = await fetch("http://localhost:5678/api/works", {
                 method: "POST",
                 headers: {
-                    Authorization: 'Bearer ${token}',
+                    Authorization: `Bearer ${token}`,
                 },
                 body: formData,
             })
 
 
             if (response.status === 201) {
-                alert('Projet ajouter');
-                closeModal();
-                updateWork()
+                // alert('Projet ajouter');
+                const modal = document.querySelector('#modal2')
+                closeModal(modal);
+                updateWork();
+                updateWorkModal()
             }else if (response.status === 400) {
                 alert("Merci de remplir tous les champs");
             } else if (response.status === 500) {
@@ -284,3 +318,6 @@ console.log(token)
 
 updateWork()
 updateCategories()
+
+
+updateWorkModal()

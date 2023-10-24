@@ -12,7 +12,7 @@
 	integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
 	crossorigin="anonymous" referrerpolicy="no-referrer">
 	<link rel="stylesheet" href="./assets/css/main.css">
-	<script src="assets/js/script.js" defer ></script>
+	<script src="./assets/js/script.js" defer ></script>
 </head>
 <!-- Mode Admin -->
 	<!--  -->
@@ -60,8 +60,8 @@
 	</section>
 	<section id="portfolio">
 		<h2 id="projets">Mes Projets <span class="portfolio__edition" style="display: none;"><a href="#modal1" class="js-modal link-modal"><i class="fa-solid fa-pen-to-square"></i>edition</a></span> </h2>
+
 		<!------- Modal ------->
-		
 		<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
 			<div class="modal-wrapper js-modal-stop">
 				<a class="js-modal-close modal-close"><i class="fa-solid fa-xmark fa-xl"></i></a>
@@ -83,7 +83,7 @@
 					<div class="form-group__photo " id="previewImageContainer">
 						<i class="fa-regular fa-image js-i-input"></i>
 						<label for="image" class="js-label-input">+ Ajouter une photo</label>
-						<input class="js-image" id="image" type="file" name="image" onchange="previewImage()">
+						<input class="js-image" id="image" type="file" name="file" onchange="previewImage()">
 						<span class="form-group__photo__span js-span-input">jpg, png : 4mo max</span>
 					</div>
 

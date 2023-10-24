@@ -140,7 +140,8 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
+	height: 475px;
+	object-fit: cover;
 }
 #contact {
 	width: 50%;
