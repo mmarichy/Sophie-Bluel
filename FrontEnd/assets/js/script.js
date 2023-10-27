@@ -89,7 +89,7 @@ function updateCategories() {
         })
     })
 }
-let allWork = document.querySelector('.allWork');
+let allWork = document.querySelector('.js-allWork');
 allWork.addEventListener('click', function(){
     document.querySelectorAll(".filter__btn").forEach(btn => {
         btn.classList.remove("filter__btn--active");})
