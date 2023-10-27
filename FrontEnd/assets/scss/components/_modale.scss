@@ -21,6 +21,7 @@
 .modal-wrapper{
     overflow: auto;
     width: 630px;
+    height: 680px;
     max-width: calc(100vw - 20px);
     max-height: calc(100vh - 20px);
     border-radius: 10px;
@@ -86,15 +87,65 @@
 }
 
 .button-ajouter-photo{
-    margin: auto;
+    font-family: "Syne";
+    font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 240px;
-    height: 40px;
+    text-align: center;
+    width: 250px;
+    height: 50px;
     border-radius: 60px;
     border: none;
     background: #1D6154;
     color: white;
+    margin: auto;
     cursor: pointer;
+}
+
+
+.gallery-modal {
+    display: flex;
+    width: 530px;
+    flex-wrap: wrap;
+    margin: 10px auto;
+    justify-content: center;
+
+    &::after {
+        display: flex;
+        content: " ";
+        border-top: 1px solid black;
+        height: 1px;
+        width: 90%;
+        margin: 40px auto;
+    }
+}
+
+.fa-trash-can::before{
+	color: white;
+	background-color: black;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.work-modal {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5px;
+
+    
+    & img{
+        width: 80px;
+        height: 110px;
+        object-fit: cover;
+    }
+
+    & i {
+        position: relative;
+        bottom: 100px;
+        left: 55px;
+        width: 22.25px;
+        height: 22.25px;
+        cursor: pointer;
+    }
 }
