@@ -47,7 +47,7 @@
     align-items: center;
 
 
-    & input[type="submit"]{
+    &__submit {
         font-family: 'Syne';
         font-weight: 700;
         color: white;
@@ -60,8 +60,8 @@
         border-radius: 60px ;
         transition: all 0.5s ease;
     }
-        
-    & input[type="submit"]:hover{
+
+    &-valider{
         background: #1D6154;
         border-color: #1D6154;
         scale: 1.05;

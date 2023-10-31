@@ -25,7 +25,7 @@
 
 <body>
 <header>
-	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
 			<a href="#projets">
@@ -79,11 +79,11 @@
 				<a class="js-modal-close modal-close"><i class="fa-solid fa-xmark fa-xl"></i></a>
 				<h2 id="titlemodal2" class="title-modal">Ajout photo</h2>
 
-				<form class="form-group" action="" enctype="multipart/form-data">
+				<form class="form-group js-form" action="" enctype="multipart/form-data">
 					<div class="form-group__photo " id="previewImageContainer">
 						<i class="fa-regular fa-image js-i-input"></i>
 						<label for="image" class="js-label-input">+ Ajouter une photo</label>
-						<input class="js-image" id="image" type="file" name="file" onchange="previewImage()">
+						<input class="js-image" id="image" type="file" name="file" >
 						<span class="form-group__photo__span js-span-input">jpg, png : 4mo max</span>
 					</div>
 
@@ -99,7 +99,7 @@
 								<!-- Categories générer dynamiquement -->
 						</select>
 					</div>
-					<input class="js-button-valider" type="submit" value="Valider">
+					<input class="js-button-valider form-group__submit" type="submit" value="Valider">
 				</form>
 
 			</div>

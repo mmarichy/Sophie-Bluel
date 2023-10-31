@@ -1,4 +1,7 @@
-// mettre dans une fonction
+///////////////////////////////////////////
+/////// Création gallery page index ///////
+///////////////////////////////////////////
+
 function updateWork() {
     document.querySelectorAll('.work').forEach((elem) => {
         elem.remove();
@@ -27,6 +30,10 @@ function updateWork() {
     })
 }
 
+///////////////////////////////////////////
+////////// Création gallery Modal /////////
+///////////////////////////////////////////
+
 function updateWorkModal() {
     document.querySelectorAll('.work-modal').forEach((elem) => {
         elem.remove();
@@ -39,6 +46,13 @@ function updateWorkModal() {
                 const trashCan = document.createElement('i')
                 trashCan.classList.add('fa-solid');
                 trashCan.classList.add('fa-trash-can');
+                trashCan.dataset.id = work.id;
+
+                trashCan.addEventListener('click', function() {
+                    deleteWork(work.id)
+                    // console.log(trashCan.dataset.id)
+                });
+
                 const figure = document?.createElement('figure');
                 figure.dataset.id = work.id;
                 figure.dataset.cat = work.categoryId;
@@ -55,6 +69,10 @@ function updateWorkModal() {
     })
 }
 
+///////////////////////////////////////////
+/////// Création Filtres Categorie  ///////
+///////////////////////////////////////////
+
 function updateCategories() {
     fetch ('http://localhost:5678/api/categories').then((res) =>{
         res.json().then((data) => {
@@ -70,8 +88,10 @@ function updateCategories() {
                     document.querySelectorAll(".filter__btn").forEach(btn => {
                         btn.classList.remove("filter__btn--active");
                     })
+
                     catFiltre.classList.add('filter__btn--active');
                     const works = document.querySelectorAll('.work');
+
                     works.forEach(work => {
                         work.style.display = 'block';
                         if (work.dataset.cat != categorie.id){
@@ -89,16 +109,27 @@ function updateCategories() {
         })
     })
 }
+
+
 let allWork = document.querySelector('.js-allWork');
 allWork.addEventListener('click', function(){
+
     document.querySelectorAll(".filter__btn").forEach(btn => {
-        btn.classList.remove("filter__btn--active");})
+        btn.classList.remove("filter__btn--active");
+    })
+
     allWork.classList.add('filter__btn--active');
     const works = document.querySelectorAll('.work');
+
     works.forEach(work =>{
         work.style.display ='block';
     })
 })
+
+
+///////////////////////////////////////////////////
+//////////////  Gestion Mode Admin ///////////////
+//////////////////////////////////////////////////
 
 const token = localStorage.getItem('token');
 const LogOut = document.querySelector('.log-out')
@@ -108,20 +139,22 @@ adminH()
 function adminH (){
     const admin = document.querySelector(".admin__mod");
     const filtersNone = document.querySelector('.filters');
-        if (token === null){
-            return;
-        }
-        else {
-            admin.removeAttribute('aria-hidden');
-            admin.removeAttribute('style');
-            LogOut.innerHTML = "deconnexion";
-
-            filtersNone.style.display = "none";
-            portfolioEdition.style.display = "flex"
-        }
+    if (token === null){
+        return;
     }
+    else {
+        admin.removeAttribute('aria-hidden');
+        admin.removeAttribute('style');
+        LogOut.innerHTML = "deconnexion";
 
-// Ajout d'un EventListener pour se déconnecter et rester sur la page //
+        filtersNone.style.display = "none";
+        portfolioEdition.style.display = "flex"
+    }
+}
+
+
+//////// EventListener pour se déconnecter ////////
+
 LogOut.addEventListener('click', function() {
     if (localStorage.getItem("token")) {
         localStorage.removeItem("token");
@@ -132,10 +165,14 @@ LogOut.addEventListener('click', function() {
     }
 })
 
+///////////////////////////////////////////
+///////////////// Modale //////////////////
+///////////////////////////////////////////
 
-// modale //
 let modal1 = null;
 let modal2 = null;
+
+//////// Ouverture Modales ////////
 
 function openModal(modal){
     event.preventDefault();
@@ -154,21 +191,13 @@ function openModal(modal){
         modal1.removeAttribute('aria-modal');
         modal1.removeEventListener('click', () => closeModal(modal1));
         modal1.style.display = "none";
-
-        const image = document.querySelector('.js-image-preview');
-        image.src = "";
-        const label = document.querySelector('.js-label-input');
-        label.style.display = "flex"
-        const iModal2 = document.querySelector('.js-i-input');
-        iModal2.style.display = "flex"
-        const span = document.querySelector('.js-span-input');
-        span.style.display = "flex"
-        const titre = document.querySelector('.js-titre');
-        titre.value = "";
-        const categorie = document.querySelector('.js-categorieid');
-        categorie.selectedIndex = 0
+        
+        ClearModal2();
     }
 }
+
+
+//////// Fermeture Modales ////////
 
 function closeModal(modal){
 
@@ -191,14 +220,15 @@ function closeModal(modal){
     modal.addEventListener('animationend', hideModal)
 }
 
+//////// EventListener 'click' ouverture des modales ////////
 document.querySelector('.js-modal').addEventListener('click', () => openModal(modal1))
 document.querySelector('.js-button-ajouter').addEventListener('click', () => openModal(modal2));
-
 
 const stopPropagation = function (e){
     e.stopPropagation();
 }
 
+//////// EventListener touche échap ////////
 window.addEventListener('keydown', function (e){
     if (e.key === "Escape" || e.key === "Esc") {
         modal1 = document.getElementById('modal1')
@@ -208,6 +238,7 @@ window.addEventListener('keydown', function (e){
     }
 })
 
+//////// Flèche retour modales ////////
 let back = document.querySelector('.js-modal-back').addEventListener('click', function (){
     modal2 = document.getElementById('modal2')
     modal1.removeAttribute('aria-hidden')
@@ -216,13 +247,12 @@ let back = document.querySelector('.js-modal-back').addEventListener('click', fu
 })
 
 
-// Categories ajout work
+//////// Categorie select modale 2 ////////
 
 let categorieModal = document.querySelector('.js-categoryid')
 fetch ('http://localhost:5678/api/categories').then((res) =>{
         res.json().then((data) => {
             const categorieModal = document.getElementById('categorie')
-            // console.log(data)
 
             data.forEach((cat) => {
                 let catModal = document.createElement('option');
@@ -235,7 +265,10 @@ fetch ('http://localhost:5678/api/categories').then((res) =>{
         })
 })
 
-// ajouter projet
+
+///////////////////////////////////////////
+/////////////// ajout projet //////////////
+///////////////////////////////////////////
 
 const btnAddProjet = document.querySelector(".js-button-valider");
 btnAddProjet.addEventListener("click", addProjet);
@@ -274,8 +307,7 @@ async function addProjet(event) {
 
             if (response.status === 201) {
                 alert('Projet ajouter');
-                const modal = document.querySelector('#modal2')
-                closeModal(modal);
+                ClearModal2()
                 updateWork();
                 updateWorkModal()
             }else if (response.status === 400) {
@@ -292,6 +324,60 @@ async function addProjet(event) {
         }
     }
 }
+///////////////////////////////////////////
+//////////// Supression Projet ////////////
+///////////////////////////////////////////
+
+async function deleteWork (id){
+
+    const response = await fetch(`http://localhost:5678/api/works/${id}` , {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    })
+    
+    if (response.status === 200 || response.status === 204) {
+        alert('Projet Supprimer');
+        updateWork();
+        updateWorkModal()
+    } else if (response.status === 500) {
+        alert("Erreur serveur");
+    } else if (response.status === 401) {
+        alert("Vous n'êtes pas autorisé à supprimer un projet");
+        window.location.href = "index.html";
+    }
+}
+
+//////////////////////////////////////////////////////////
+////////// Vide la modale après ajout de projet //////////
+//////////////////////////////////////////////////////////
+
+function ClearModal2() {
+    const image = document.querySelector('.js-image-preview');
+    if (image === null){
+        return;
+    } else {
+        image.remove();
+        const label = document.querySelector('.js-label-input');
+        label.style.display = "flex"
+        const iModal2 = document.querySelector('.js-i-input');
+        iModal2.style.display = "flex"
+        const span = document.querySelector('.js-span-input');
+        span.style.display = "flex"
+        const titre = document.querySelector('.js-titre');
+        titre.value = "";
+        const categorie = document.querySelector('.js-categorieid');
+        categorie.selectedIndex = 0
+    }
+}
+
+///////////////////////////////////////////
+////////// Preview image modal 2 //////////
+///////////////////////////////////////////
+
+let preview = document.querySelector('.js-image');
+preview.addEventListener('change', previewImage);
 
 function previewImage() {
     const fileInput = document.getElementById('image');
@@ -314,7 +400,6 @@ function previewImage() {
             inputPreview.style.display = "none";
             const spanPreview = document.querySelector('.js-span-input')
             spanPreview.style.display = "none";
-
             imagePreviewContainer.appendChild(image);
         });
         
@@ -326,40 +411,31 @@ function previewImage() {
       
       reader.readAsDataURL(file);
     }
-  }
-
-console.log(token)
+}
 
 
-// Supression Projet
+let changeBtn = document.querySelector('.js-form');
 
-// async function deleteWork (){
+changeBtn.addEventListener('change', Filledform)
 
-//     const response = await fetch("http://localhost:5678/api/works/" , {
-//         method: "DELETE",
-//         headers: {
-//             Authorization: `Bearer ${token}`,
-//         },
-//     })
+function Filledform() {
+    const img = document.querySelector('.js-image');
+    const title = document.querySelector('.js-titre');
+    const categorie = document.querySelector('.js-categorieid');
+    const buttonValider = document.querySelector('.js-button-valider');
 
+    if (title != "" && categorie != "" && img != undefined) {
+        buttonValider.classList.remove("form-group__submit")
+        buttonValider.classList.add("form-group-valider")
+    }
 
-//     if (response.status === 200 || response.status === 204) {
-//         alert('Projet Supprimer');
-//         const modal = document.querySelector('#modal2')
-//         closeModal(modal);
-//         updateWork();
-//         updateWorkModal()
-//     } else if (response.status === 500) {
-//         alert("Erreur serveur");
-//     } else if (response.status === 401) {
-//         alert("Vous n'êtes pas autorisé à supprimer un projet");
-//         window.location.href = "index.html";
-//         }
-//     }
+    console.log(img)
+    console.log(title)
+    console.log(categorie)
+}
 
-    
-let deleteLink = document.querySelectorAll(".fa-trash-can");
-console.log(deleteLink)
+console.log(changeBtn);
+
 
 updateWork()
 updateCategories()
