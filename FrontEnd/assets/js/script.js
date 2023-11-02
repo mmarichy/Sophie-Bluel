@@ -350,6 +350,32 @@ async function deleteWork (id){
 }
 
 //////////////////////////////////////////////////////////
+//////////// Validation pour ajout des projets ///////////
+//////////////////////////////////////////////////////////
+
+let changeBtn = document.querySelector('.js-form');
+let buttonValider = document.querySelector('.js-button-valider');
+
+changeBtn.addEventListener('change', Filledform);
+
+function Filledform() {
+    const img = document.querySelector('.js-image').value;
+    const title = document.querySelector('.js-titre').value;
+    const categorie = document.querySelector('.js-categorieid').selectedIndex;
+    buttonValider.setAttribute("disabled", true);
+    buttonValider.classList.remove("form-group-valider");
+
+    if (categorie === "" || title === "" || img === "") {
+        return;
+    } else if (categorie !== 1 && categorie !== 2 && categorie !== 3){
+        return;
+    } else {
+        buttonValider.removeAttribute("disabled");
+        buttonValider.classList.add("form-group-valider");
+    }
+}
+
+//////////////////////////////////////////////////////////
 ////////// Vide la modale après ajout de projet //////////
 //////////////////////////////////////////////////////////
 
@@ -369,6 +395,8 @@ function ClearModal2() {
         titre.value = "";
         const categorie = document.querySelector('.js-categorieid');
         categorie.selectedIndex = 0
+        buttonValider.classList.remove("form-group-valider");
+        buttonValider.setAttribute("disabled", true);
     }
 }
 
@@ -412,29 +440,6 @@ function previewImage() {
       reader.readAsDataURL(file);
     }
 }
-
-
-let changeBtn = document.querySelector('.js-form');
-
-changeBtn.addEventListener('change', Filledform)
-
-function Filledform() {
-    const img = document.querySelector('.js-image');
-    const title = document.querySelector('.js-titre');
-    const categorie = document.querySelector('.js-categorieid');
-    const buttonValider = document.querySelector('.js-button-valider');
-
-    if (title != "" && categorie != "" && img != undefined) {
-        buttonValider.classList.remove("form-group__submit")
-        buttonValider.classList.add("form-group-valider")
-    }
-
-    console.log(img)
-    console.log(title)
-    console.log(categorie)
-}
-
-console.log(changeBtn);
 
 
 updateWork()
