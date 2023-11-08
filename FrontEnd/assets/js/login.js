@@ -77,8 +77,5 @@ function login(id) {
 
             .catch(error =>
                 console.log(error));
-                const p = document.createElement("p");
-                p.innerHTML = "Une erreur est survenue! <br>Merci de réesayer ultérieurement.";
-                loginMdpError.appendChild(p);
     }
     }
